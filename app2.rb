@@ -31,10 +31,14 @@ while human_player.life_points > 0 && (player1.life_points > 0 || player2.life_p
   if action == 'a' then human_player.search_weapon end
   if action == 's' then human_player.search_health_pack end
   if action == '0' then human_player.attacks(player1) end
-  if action == '1' then human_player.attacks(player2) end
-  puts "Les autres t'attaquent\n\n"
+  if action == '1' 
+    human_player.attacks(player2)
+  else
+    puts "invalid input, you lost your turn"
+  end
   ennemies.each do |ennemy| 
     if human_player.life_points > 0 && ennemy.life_points > 0
+      puts "Les autres t'attaquent:\n\n"
       ennemy.attacks(human_player)
     end
   end
